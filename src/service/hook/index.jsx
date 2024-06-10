@@ -36,6 +36,7 @@ const HookMqtt = () => {
   const [ph, setPh] = useState(0)
   const [temp, setTemp] = useState(0)
   const [turbidity, setTurbidity] = useState(0)
+  const [date, setDate] = useState("")
 
   const mqttConnect = (host, mqttOption) => {
     setConnectStatus('Connecting')
@@ -59,19 +60,20 @@ const HookMqtt = () => {
       })
 
       client.on('message', (topic, message) => {
-        const payload = JSON.parse(message.toString())
-        setPayload(payload)
-        
-        // Update state with the received values
-        setAccelX(payload.accelX)
-        setAccelY(payload.accelY)
-        setAccelZ(payload.accelZ)
-        setPh(payload.ph)
-        setTemp(payload.temp)
-        setTurbidity(payload.turbidity)
-        
-        console.log(`received message: ${message} from topic: ${topic}`)
-      })
+        const payload = JSON.parse(message.toString());
+        setPayload(payload);
+      
+        // Update state with the received values or default to 0 if undefined
+        setAccelX(payload.accelX || 0);
+        setAccelY(payload.accelY || 0);
+        setAccelZ(payload.accelZ || 0);
+        setPh(payload.ph || 0);
+        setTemp(payload.temp || 0);
+        setTurbidity(payload.turbidity || 0);
+      setDate(payload.date || new Date().toLocaleString())
+        console.log(`received message: ${message} from topic: ${topic}`);
+      });
+      
     }
   }, [client])
 
@@ -156,7 +158,7 @@ const HookMqtt = () => {
                       })}
                     />
                   </div><br />
-                  <h5><center>Date ada disini</center></h5>
+                  <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -178,7 +180,7 @@ const HookMqtt = () => {
                       })}
                     />
                   </div><br />
-                  <h5><center>Date ada disini</center></h5>
+                  <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -202,7 +204,7 @@ const HookMqtt = () => {
                       })}
                     />
                   </div><br />
-                  <h5><center>Date ada disini</center></h5>
+                  <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -224,7 +226,7 @@ const HookMqtt = () => {
                       })}
                     />
                   </div><br />
-                  <h5><center>Date ada disini</center></h5>
+                  <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -248,7 +250,7 @@ const HookMqtt = () => {
                       })}
                     />
                   </div><br />
-                  <h5><center>Date ada disini</center></h5>
+                  <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -270,7 +272,7 @@ const HookMqtt = () => {
                       })}
                     />
                   </div><br />
-                  <h5><center>Date ada disini</center></h5>
+                  <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
             </Card>
