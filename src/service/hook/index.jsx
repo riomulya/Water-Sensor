@@ -193,7 +193,7 @@ const HookMqtt = () => {
             <Card className="card mx-auto">
               <Card.Body>
                 <Card.Text>
-                  <div className="box-odometer">
+                  <span className="box-odometer">
                     <CircularProgressbar
                       value={accelZ}
                       text={`${accelZ} m/s²`}
@@ -203,7 +203,7 @@ const HookMqtt = () => {
                         trailColor: 'black'
                       })}
                     />
-                  </div><br />
+                  </span><br />
                   <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
@@ -215,7 +215,7 @@ const HookMqtt = () => {
             <Card className="card mx-auto">
               <Card.Body>
                 <Card.Text>
-                  <div className="box-odometer">
+                  <span className="box-odometer">
                     <CircularProgressbar
                       value={ph}
                       text={`${ph} pH`}
@@ -225,7 +225,7 @@ const HookMqtt = () => {
                         trailColor: 'black'
                       })}
                     />
-                  </div><br />
+                  </span><br />
                   <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
@@ -239,7 +239,7 @@ const HookMqtt = () => {
             <Card className="card mx-auto">
               <Card.Body>
                 <Card.Text>
-                  <div className="box-odometer">
+                  <span className="box-odometer">
                     <CircularProgressbar
                       value={temp}
                       text={`${temp} °C`}
@@ -249,7 +249,7 @@ const HookMqtt = () => {
                         trailColor: 'black'
                       })}
                     />
-                  </div><br />
+                  </span><br />
                   <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
@@ -261,7 +261,7 @@ const HookMqtt = () => {
             <Card className="card mx-auto">
               <Card.Body>
                 <Card.Text>
-                  <div className="box-odometer">
+                  <span className="box-odometer">
                     <CircularProgressbar
                       value={turbidity}
                       text={`${turbidity} NTU`}
@@ -271,7 +271,7 @@ const HookMqtt = () => {
                         trailColor: 'black'
                       })}
                     />
-                  </div><br />
+                  </span><br />
                   <h5><center>{date}</center></h5>
                 </Card.Text>
               </Card.Body>
