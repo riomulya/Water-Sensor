@@ -1,5 +1,4 @@
-import {Routes, Route} from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavigationBar from "./components/NaviagtionBar";
 import FooterBar from "./components/FooterBar";
 
@@ -20,7 +19,8 @@ function App() {
   return <div>
     <NavigationBar />
 
-    <Routes>
+    <Router>
+    <Switch>
       <Route path="/" Component={home} />
       <Route path="/home" Component={home} />
       <Route path="/login" Component={login} />
@@ -34,8 +34,8 @@ function App() {
       <Route path="/phSensor" Component={phSensor} />
       <Route path="/temperSensor" Component={temperSensor} />
       <Route path="/turdibSensor" Component={turdibSensor} />
-    
-    </Routes>
+    </Switch>
+    </Router>
    
     <FooterBar/>
   </div>
