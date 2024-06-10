@@ -6,7 +6,10 @@ import {
   useMap,
 } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { Card } from 'react-bootstrap';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import mqtt from 'mqtt';
 import HookMqtt from '../service/hook'
 
 const RecenterAutomatically = ({ lat, lng }) => {
@@ -22,6 +25,7 @@ const Dashboard = () => {
   const [history, setHistory] = useState([]);
 
   
+
   return (
     <div>
       <section>
@@ -46,9 +50,12 @@ const Dashboard = () => {
             </MapContainer>
           </div>
         </div>
-      </section>
-      <HookMqtt/>
 
+        <div className="app">
+          <HookMqtt/>
+        </div>
+      </section>
+    
     </div>
   );
 };
