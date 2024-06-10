@@ -58,8 +58,8 @@ const Dashboard = () => {
   useEffect(() => {
     const options = {
       host: '3a6152cff8674790bcad3c3c23ee9a34.s1.eu.hivemq.cloud',
-      port: 8883,
-      protocol: 'mqtts',
+      port: 8884,
+      protocol: 'wss',
       username: 'admin',
       password: 'Water123456'
     };
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
     client.on('connect', () => {
       console.log('Connected to MQTT broker');
-      client.subscribe('home/topic/sensors', (err) => {
+      client.subscribe('testtopic/react', (err) => {
         if (err) {
           console.error('Subscription error:', err);
         }
@@ -79,8 +79,9 @@ const Dashboard = () => {
       console.error('MQTT Connection Error:', error);
     });
 
-    client.on('message', (topic, message) => {
+    client.on('message', (message) => {
       const parsedMessage = JSON.parse(message.toString());
+      console.log(parsedMessage);
       setOdometerValues({
         ph: parsedMessage.ph,
         accelX: parsedMessage.accelX,
@@ -89,6 +90,7 @@ const Dashboard = () => {
         temp: parsedMessage.temp,
         turbidity: parsedMessage.turbidity
       });
+      console.log('Updated odometerValues:', odometerValues); // Tambahkan baris ini untuk debugging
     });
 
     return () => {
@@ -123,7 +125,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="box-feeds row d-flex justify-content-center mx-auto">
+        {/* <div className="box-feeds row d-flex justify-content-center mx-auto">
           <div className='col mx-auto'>
             <h1><center>Accel X</center></h1>
             <Card className="card mx-auto">
@@ -259,11 +261,12 @@ const Dashboard = () => {
               </Card.Body>
             </Card>
           </div>
+        </div> */}
+        <div className="app">
+          <HookMqtt/>
         </div>
       </section>
-      <HookMqtt />
-      {/* Hook or Class */}
-      {/* <ClassMqtt /> */}
+    
     </div>
   );
 };
